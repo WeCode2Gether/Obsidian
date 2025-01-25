@@ -1,5 +1,5 @@
 #!/bin/bash
-timestamp=$(date '%B %d, %Y %I:%M %p')
+timestamp=$(date '+%B %d, %Y %I:%M %p')
 
 
 cp ./update.sh ~/Desktop/WeCode2Gether/ConfigFiles
