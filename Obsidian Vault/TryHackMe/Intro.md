@@ -111,4 +111,65 @@ The ways of being able to exploit a web application:
 	- 5) [Session.] This is where 2 devices maintain a connection through the network. the session layer (layer 5) will begin to create and maintain the connection to other computer for which the data is destined. When a connection is established, a session is created. Whilst this connection is active, so is the session. The session layer is also responsible for closing the connection if it hasn't been used in a while or if it is lost. Additionally, a session can contain "checkpoints," where if the data is lost, only the newest pieces of data are required to be sent, saving bandwidth. What is worthy of noting is that sessions are unique — meaning that data cannot travel over different sessions, but in fact, only across each session instead.
 	- 6) [Presentation.] Layer 6 of the OSI model is the layer in which standardisation starts to take place. Because software developers can develop any software such as an email client differently, the data still needs to be handled in the same way — no matter how the software works. This layer acts as a translator for data to and from the application layer (layer 7). The receiving computer will also understand data sent to a computer in one format destined for in another format. For example, when you send an email, the other user may have another email client to you, but the contents of the email will still need to display the same. Security features such as data encryption (like HTTPS when visiting a secure site) occur at this layer.
 	- 7) [Application.] The application layer of the OSI model is the layer that you will be most familiar with. This familiarity is because the application layer is the layer in which protocols and rules are in place to determine how the user should interact with data sent or received. Everyday applications such as email clients, browsers, or file server browsing software such as FileZilla provide a friendly, Graphical User Interface (GUI) for users to interact with data sent or received. Other protocols include DNS (Domain Name System), which is how website addresses are translated into IP addresses.
-	- 
+
+
+<h2> Packets and Frames </h2>
+<h5> TCP </h5>
+
+- [TCP] uses the three-way-handshake to establish a connection. It must establish a connection before any data is sent. TCP/IP Protocol consists of four layers and is arguably just a summarised version of the OSI model. These layers are:
+	- Application
+	- Transport
+	- Internet
+	- Network Interface
+
+- The disadvantages of this specific protocol are, and not limited to,:
+	- Requires a reliable connection between the two devices. If one small chunk of data is not received, then the entire chunk of data cannot be used and must be re-sent.
+	- A slow connection can bottleneck another device as the connection will be reserved on the other device the whole time.
+	- TCP is significantly slower than UDP because more work (computing) has to be done by the devices using this protocol.
+
+- Advantages:
+	- Guarantees the integrity of data.
+	- Capable of synchronising two devices to prevent each other from being flooded with data in the wrong order.
+	- Performs a lot more processes for reliability
+
+- TCP Packets include information which can be categorized as headers and information/description.
+	- Headers & Descriptions:
+		- [Source Port.] This value is the port the TCP packet was sent from.
+		- [Destination Port.] This value is the port the TCP packet will reach. Usually an application or a service running on the receiver's device.
+		- [Source IP.] This is the IP address of the device that is sending the packet.
+		- [Destination IP.] This is the IP address of the device that the packet is destined for.
+		- [Sequence Number.] When a connection occurs, the first piece of data transmitted is given a random number. (will be explained later)
+		- [Acknowledgement Number.] After a piece of data has been given a sequence number, the number for the next piece of data will have the sequence number + 1. (will be explained later)
+		- [Checksum.] This value is what gives TCP integrity. A mathematical calculation is made where the output is remembered. When the receiving device performs the mathematical calculation, the data must be corrupt if the output is different from what was sent.
+		- [Data.] This header is where the data, i.e. bytes of a file that is being transmitted, is stored.
+		- [Flag.] This header determines how the packet should be handled by either device during the handshake process. Specific flags will determine specific behaviours, which is what we'll come on to explain below.
+- The *Three-Way-Handshake* is a term given for the process used to establish a connection between two devices (which is used in the TCP protocol). The messages/process/steps include:
+	- 1. [SYN.] A SYN message is the initial packet sent by a client during the handshake. This packet is used to initiate a connection and synchronise the two devices together.
+	- 2. [SYN/ACK.] This packet is sent by the receiver (server) to acknowledge the synchronization attempt from the initial sender (client). 
+	- 3. [ACK.] The acknowledgement packet can be used by either the client or server to acknowledge that a series of messages/packets have been successfully received. (Thus the threeway handshake occurs)
+	- 4. [DATA.] Once a connection has been established, data (such as bytes of a file) is sent via the "DATA" message.
+	- 5. [FIN.] This packet is used to cleanly (properly) close the connection after it has been complete.
+	- 6. [RST.] This packet abruptly ends all communication. This is the last resort and indicates there was some problem during the process. For example, if the service or application is not working correctly, or the system has faults such as low resources.
+
+<h5> UDP/IP </h5>
+- Unlike [TCP], [UDP] doesn't require a constant connection between the two devices for data to be sent. 
+- Disadvantages:
+	- UDP doesn't care if the data is received or not.
+	- It is quite flexible to software developers in this sense.
+	- This means that unstable connections result in a terrible experience for the user.
+- Advantages:
+	- UDP is much faster than TCP.
+	- UDP leaves the application (user software) to decide if there is any control over how quickly packets are sent.
+	- UDP does not reserve a continuous connection on a device as TCP does.
+- Headers:
+	- [TTL.] Time To Live makes sure the network isn't clogged by having a time set. If the packet doesn't reach its destination it stops eventually.
+	- [Source Address.] The IP address of the device that the packet is being sent from, so that data knows where to return to.
+	- [Destination Address.] The device's IP address the packet is being sent to so that data knows where to travel next.
+	- [Source Port.] This value is the port that is opened by the sender to send the UDP packet from. This value is randomly chosen (out of the ports from 0-65535 that aren't already in use at the time).
+	- [Destination Port.] This value is the port number that an application or service is running on the remote host (the one receiving the data); for example, a webserver running on port 80. Unlike the source port, this value is not chosen at random.
+	- [Data.] This header is where data, i.e. bytes of a file that is being transmitted, is stored.
+
+
+
+<h2> LOREM IPSUM </h2>
+
