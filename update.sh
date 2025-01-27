@@ -1,9 +1,15 @@
 #!/bin/bash
+# Cron running this shell & the command for every 24 hrs is:
+# 0 0 * * * ~/Desktop/WeCode2Gether/update.sh
+# 12 hrs is:
+# 0 0,12 * * * ~/Desktop/WeCode2Gether/update.sh
+
+
 timestamp=$(date '+%B %d, %Y %I:%M %p')
 
 
-cp ./update.sh ~/Desktop/WeCode2Gether/ConfigFiles
-cp ./update.sh ~/Desktop/WeCode2Gether/Obsidion
+cp ~/Desktop/WeCode2Gether/update.sh ~/Desktop/WeCode2Gether/ConfigFiles
+cp ~/Desktop/WeCode2Gether/update.sh ~/Desktop/WeCode2Gether/Obsidion
 cp -r ~/dotfiles/.config/hypr ~/Desktop/WeCode2Gether/ConfigFiles/hypr
 cp -r ~/dotfiles/.config/kitty ~/Desktop/WeCode2Gether/ConfigFiles/kitty
 cp -r ~/.config/neofetch ~/Desktop/WeCode2Gether/ConfigFiles/neofetch
