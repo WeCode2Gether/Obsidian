@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TryHackMe/Intro.md",
+                "file": "TryHackMe/Pre-Security.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Intro"
+              "title": "Pre-Security"
             }
           }
         ]
@@ -172,10 +172,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2a30dfc27eacb81b",
+  "active": "1dd029937c89f177",
   "lastOpenFiles": [
     "Steps (Pentesting)/ChatGPT.md",
-    "TryHackMe/Intro.md",
+    "TryHackMe/Pre-Security.md",
     "Badges/User Badge.md",
     "Badges",
     "2025-01-21.md",
