@@ -199,3 +199,25 @@ Virtual Private Network is a technology that allows devices on separate networks
 [Router.] connects networks and pass data between them using routing. Routing is the label given to the process of data travelling across networks. Routing involves creating a path between networks so that this data can be successfully delivered. Routers operate at Layer 3 of the OSI model. They often feature an interactive interface (such as a website or a console) that allows an administrator to configure various rules such as port forwarding or firewalling.
 
 [Switch.] dedicated networking device responsible for providing a means of connecting to multiple devices. Switches can facilitate many devices (from 3 to 63) using Ethernet cables. Switches can operate at both layer 2 and layer 3 of the OSI model. However, these are exclusive in the sense that Layer 2 switches cannot operate at layer 3.
+
+
+
+
+<h5> DNS </h5>
+- Domain name system converts the IP address of a server or a destination to a more memorable name. Its divided into 2:
+	- [TLD.] The Top Level Domain is the "..com" part of a website. There are thousands of different TLDs which includes ccTLD (country code TLD) and a gTLD (Generic TLD). For example, .ca for Canada and .co.uk for UK websites would be a ccTLD while ".com" would be a gTLD.
+	- [SLD.] This is the name of the server. The "tryhackme".com or "google".com. This is limited by 63 characters without any special keys except hyphens (except consecutive hyphens).
+	- Subdomain is the "." and whatever comes before it that places itself before the SLD. For example, "admin".Tryhackme.com. The "admin" is the subdomain. You can have multiple subdomains BUT the total characters of the website should be less than 253.
+
+- There are different DNS Record Types:
+	- [A Record.] which resolves to IPv4 Addresses. Translates the text version of a website to IPv4.
+	- [AAAA Record.] which resolves to IPv6 Addresses. Translates the text version of a website to IPv6.
+	- [CNAME Record.] relabels the name of the website. Visiting store.tryhackme.com would take you to shops.shopify.com.
+	- [MX Record.] resolves to the address of the servers that handle the email for the domain you are querying. The MX Record for tryhackme.com would be something like alt1.aspmx.l.google.com.
+	- [TXT Record.] are free text fields where any text-based data can be stored. TXT records have multiple uses, but some common ones can be to list servers that have the authority to send an email on behalf of the domain (this can help in the battle against spam and spoofed email). They can also be used to verify ownership of the domain name when signing up for third party services.
+- The steps that every DNS lookup goes through:
+	- 1.) When you request a domain name, your computer first checks its local cache to see if you've previously looked up the address recently; if not, a request to your Recursive DNS Server will be made.
+	- 2.) A Recursive DNS Server is usually provided by your ISP, but you can also choose your own. This server also has a local cache of recently looked up domain names. If a result is found locally, this is sent back to your computer, and your request ends here (this is common for popular and heavily requested services such as Google, Facebook, Twitter). If the request cannot be found locally, a journey begins to find the correct answer, starting with the internet's root DNS servers.
+	- 3.) The root servers act as the DNS backbone of the internet; their job is to redirect you to the correct Top Level Domain Server, depending on your request. If, for example, you request www.tryhackme.com, the root server will recognise the Top Level Domain of .com and refer you to the correct TLD server that deals with .com addresses.
+	- 4.) The TLD server holds records for where to find the authoritative server to answer the DNS request. The authoritative server is often also known as the nameserver for the domain. For example, the name server for tryhackme.com is kip.ns.cloudflare.com and uma.ns.cloudflare.com. You'll often find multiple nameservers for a domain name to act as a backup in case one goes down.
+	- 5.) An authoritative DNS server is the server that is responsible for storing the DNS records for a particular domain name and where any updates to your domain name DNS records would be made. Depending on the record type, the DNS record is then sent back to the Recursive DNS Server, where a local copy will be cached for future requests and then relayed back to the original client that made the request. DNS records all come with a TTL (Time To Live) value. This value is a number represented in seconds that the response should be saved for locally until you have to look it up again. Caching saves on having to make a DNS request every time you communicate with a server.
