@@ -221,3 +221,58 @@ Virtual Private Network is a technology that allows devices on separate networks
 	- 3.) The root servers act as the DNS backbone of the internet; their job is to redirect you to the correct Top Level Domain Server, depending on your request. If, for example, you request www.tryhackme.com, the root server will recognise the Top Level Domain of .com and refer you to the correct TLD server that deals with .com addresses.
 	- 4.) The TLD server holds records for where to find the authoritative server to answer the DNS request. The authoritative server is often also known as the nameserver for the domain. For example, the name server for tryhackme.com is kip.ns.cloudflare.com and uma.ns.cloudflare.com. You'll often find multiple nameservers for a domain name to act as a backup in case one goes down.
 	- 5.) An authoritative DNS server is the server that is responsible for storing the DNS records for a particular domain name and where any updates to your domain name DNS records would be made. Depending on the record type, the DNS record is then sent back to the Recursive DNS Server, where a local copy will be cached for future requests and then relayed back to the original client that made the request. DNS records all come with a TTL (Time To Live) value. This value is a number represented in seconds that the response should be saved for locally until you have to look it up again. Caching saves on having to make a DNS request every time you communicate with a server.
+
+
+<h5> HTTP/HTTPS </h5> 
+- [HTTP.] or HyperText Transfer Protocol is the set of rules used for communicating with web servers for the transmitting of webpage data, whether that is HTML, Images, Videos, etc.
+- [HTTPS.] or HyperText Transfer Protocol Secure is the secure version of HTTP. HTTPS data is encrypted so it not only stops people from seeing the data you are receiving and sending, but it also gives you assurances that you're talking to the correct web server and not something impersonating it.
+
+<h5> URL </h5>
+- When the client makes a request to a server via HTTP/HTTPS it downloads the response, thus, being able to view the webpage. This occurs when you know exactly what you need (request). The Uniform Resource Locator or [URL.] helps you receive the requested information. A URL is predominantly an instruction on how to access a resource on the internet and it includes:
+	- [Scheme.] which is the "http" or "https" portion of the URL. There are more protocols such as "FTP" etc.
+	- [User.] Then comes the "Username:Password" if the server requires a login.
+	- [Host.] Then comes the hostname or the domain you wish to access. 
+	- [Port.] Then comes the port of that domain you wish to interact with.
+	- [Path.] Then comes the path to the filename or resource you wish to interact with.
+	- [Query String.] Then comes extra bits of information that can be sent to the requested path. For example, "/blog?id=1" would tell the blog path that you wish to receive the blog article with the id of 1.
+	- [Fragment.] This is a reference to a location on the actual page requested. This is commonly used for pages with long content and can have a certain part of the page directly linked to it, so it is viewable to the user as soon as they access the page. 
+	- ![[URL.png]]
+
+- An example of a request code would be:
+	- ![[Request Code.jpg]]
+	 - A breakdown of what happened here is that the client sent a GET code to the server's main page using HTTP 1.1 method.
+	- We are telling the webserver we want the website: tryhackme.com
+	- We then inform the web server we are using the firefox version 87.0
+	- We then let them know that the website that referred us to tryhackme.com was "https://tryhackme.com"
+
+
+- An example of a response code would be:
+	- ![[Response Code.jpg]]
+	- HTTP 1.1 is the version of HTTP the web server is using.
+	- 200 OK lets us know that the request has been completed/accepted.
+	- Server tells us the web server software and version number.
+	- Date tell us the current date, time and timezone of the web server.
+	- Content-Type tells the client what sort of information is going to be sent, such as HTML, images, videos, pdf, XML.
+	- Content-Length tells the client how long the response is, this way we can confirm no data is missing.
+
+- HTTP methods are a way for the client to show their intended action when making an HTTP request. There are a lot of HTTP methods the most common ones are:
+	- [GET Request.] This is used for getting information from a web server.
+	- [POST Request.] This is used for submitting data to the web server and potentially creating new records.
+	- [PUT Request] This is used for submitting data to a web server to update information.
+	- [DELETE Request] This is used for deleting information/records from a web server.
+
+<h5> HTTP Status Codes </h5>
+![[HTTP Status Codes.jpg]]
+
+<h5> Common HTTP Headers </h5>
+- HTTP Request headers:
+	- [HOST.] Some web servers host multiple websites so by providing the host headers you can tell it which one you require, otherwise you'll just receive the default website for the server.
+	- [User-Agent.] This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
+	- [Content-Length.] When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
+	- [Accept-Encoding.] Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
+	- [Cookie.] Data sent to the server to help remember your information.
+- HTTP Response headers:
+	- [Set-Cookie.] Information to store which gets sent back to the web server on each request.
+	- [Cache-Control.] How long to store the content of the response in the browser's cache before it requests it again.
+	- [Content-Type.] This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+	- [Content-Encoding.] What method has been used to compress the data to make it smaller when sending it over the internet.
