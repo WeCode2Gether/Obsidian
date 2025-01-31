@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -174,20 +175,22 @@
   },
   "active": "0cc4c1a386768c69",
   "lastOpenFiles": [
+    "Images/HTML Vulnerability.svg",
+    "Images/Unconfirmed 26067.crdownload",
+    "Steps (Pentesting)/ChatGPT.md",
+    "HTB Notes/Getting started module.md",
+    "TryHackMe/Pre-Security.md",
     "Images/HTTP Status Codes.jpg",
     "Images/Request Code.jpg",
-    "TryHackMe/Pre-Security.md",
     "Images/Response Code.jpg",
     "Images/URL.png",
     "Images",
     "URL.png.crdownload",
-    "Steps (Pentesting)/ChatGPT.md",
     "Badges/User Badge.md",
     "Badges",
     "2025-01-21.md",
     "Steps (Pentesting)/Untitled.canvas",
     "Steps (Pentesting)",
-    "HTB Notes/Getting started module.md",
     "TryHackMe",
     "HTB Notes"
   ]
