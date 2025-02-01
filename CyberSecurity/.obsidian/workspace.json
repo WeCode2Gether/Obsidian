@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TryHackMe/Pre-Security.md",
+                "file": "Misc./Vim.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Pre-Security"
+              "title": "Vim"
             }
           }
         ]
@@ -173,13 +173,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0cc4c1a386768c69",
+  "active": "1dd029937c89f177",
   "lastOpenFiles": [
+    "TryHackMe/Pre-Security.md",
+    "Misc./Vim.md",
+    "Misc.",
     "Images/HTML Vulnerability.svg",
     "Images/Unconfirmed 26067.crdownload",
     "Steps (Pentesting)/ChatGPT.md",
     "HTB Notes/Getting started module.md",
-    "TryHackMe/Pre-Security.md",
     "Images/HTTP Status Codes.jpg",
     "Images/Request Code.jpg",
     "Images/Response Code.jpg",
