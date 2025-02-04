@@ -355,3 +355,15 @@ Virtual Private Network is a technology that allows devices on separate networks
 
 
 <h5> Windows Fundamentals </h5>
+- [msconfig] which is known as the System Configuration Utility that helps with startup issues.
+- [compmgmt] which is known as the Computer Management Utility that deals with System Tools, Storage, and Services and Applications.
+- [msinfo32] which gives a detailed information of the system at hand from OS information to hardware components.
+- [resmon.exe] which is the resource monitor of the system. It shows details of CPU, Disk, Network and Memory usage.
+- [CMD] or the Command Prompt is a way you communicate with the system similar to the Terminal for Mac and Linux OSs. Important commands include:
+	- [ipconfig] which shows the connected network devices and additional information.
+	- [hostname] which provides the name of the system.
+	- [whoami] which provides the name of the user (also includes the name of the system)
+	- [cls] same as [clear] on linux terminal.
+	- [netstat] this command will display protocol statistics and current TCP/IP network connections.
+- [regedit] known as the Registry Editor which shows information on the registries and lets you edit them.
+- 
