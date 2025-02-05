@@ -366,4 +366,11 @@ Virtual Private Network is a technology that allows devices on separate networks
 	- [cls] same as [clear] on linux terminal.
 	- [netstat] this command will display protocol statistics and current TCP/IP network connections.
 - [regedit] known as the Registry Editor which shows information on the registries and lets you edit them.
-- 
+- [firewall] "_Traffic flows into and out of devices via what we call ports. A [firewall] is what controls what is - and more importantly isn't - allowed to pass through those ports. You can think of it like a security guard standing at the door, checking the ID of everything that tries to enter or exit_".
+- [wf.msc] Windows Defender's Firewall (run command)
+- [Microsoft Defender Smartscreen] _Microsoft Defender SmartScreen protects against phishing or malware websites and applications, and the downloading of potentially malicious files_. 
+- [TPM.] Per Microsoft, "_Trusted Platform Module (TPM) technology is designed to provide hardware-based, security-related functions. A TPM chip is a secure crypto-processor that is designed to carry out cryptographic operations. The chip includes multiple physical security mechanisms to make it tamper-resistant, and malicious software is unable to tamper with the security functions of the TPM_".
+- [Bitlocker] Per Microsoft, "_BitLocker Drive Encryption is a data protection feature that integrates with the operating system and addresses the threats of data theft or exposure from lost, stolen, or inappropriately decommissioned computers_".
+- [VSS.] (also known as the Volume Shadow Copy Service) coordinates the required actions to create a consistent shadow copy (also known as a snapshot or a point-in-time copy) of the data that is to be backed up. (something linux lacks unfortunately 🤕)
+
+<h1> [The End Of Pre-Security] </h1>

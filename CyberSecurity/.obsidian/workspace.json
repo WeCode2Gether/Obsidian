@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TryHackMe/Pre-Security.md",
+                "file": "TryHackMe/Cyber-Security 101.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Pre-Security"
+              "title": "Cyber-Security 101"
             }
           }
         ]
@@ -173,10 +173,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0cc4c1a386768c69",
+  "active": "1dd029937c89f177",
   "lastOpenFiles": [
-    "Misc./Vim.md",
     "TryHackMe/Pre-Security.md",
+    "TryHackMe/Cyber-Security 101.md",
+    "Misc./Vim.md",
     "Misc.",
     "Images/HTML Vulnerability.svg",
     "Images/Unconfirmed 26067.crdownload",
