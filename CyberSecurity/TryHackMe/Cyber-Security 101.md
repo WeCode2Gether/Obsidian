@@ -64,5 +64,94 @@ We can think of the Common Vulnerabilities and Exposures (CVE) program as a dict
 
 The MITRE(MITRE Adversarial Tactics, Techniques, and Common Knowledge (ATT&CK)) Corporation maintains the CVE system. For more information and to search for existing CVEs, visit the [CVE Program](https://www.cve.org/) website. Alternatively, visit the [National Vulnerability Database](https://nvd.nist.gov/) (NVD) website. The screenshot below shows CVE-2014-0160, also known as Heartbleed.
 
-### Exploit Database
+#### Exploit Database
 The [Exploit Database](https://www.exploit-db.com) lists exploit codes from various authors; some of these exploit codes are tested and marked as verified.
+
+### Active Directory Basics
+**Windows domain** is a group of users and computers under the administration of a given business. The main idea behind a domain is to centralise the administration of common components of a Windows computer network in a single repository called **Active Directory (AD)**. The server that runs the Active Directory services is known as a **Domain Controller (DC)**.
+
+Advantages include:
+1.  **Centralized identity management:** All users across the network can be configured from Active Directory with minimum effort.
+2. **Managing security policies:** You can configure security policies directly from Active Directory and apply them to users and computers across the network as needed.
+In school/university networks, you will often be provided with a username and password that you can use on any of the computers available on campus. Your credentials are valid for all machines because whenever you input them on a machine, it will forward the authentication process back to the Active Directory, where your credentials will be checked. Thanks to Active Directory, your credentials don't need to exist in each machine and are available throughout the network.
+
+Active Directory is also the component that allows your school/university to restrict you from accessing the control panel on your school/university machines. Policies will usually be deployed throughout the network so that you don't have administrative privileges over those computers.
+
+﻿The core of any Windows Domain is the **Active Directory Domain Service (AD DS)**. This service acts as a catalog that holds the information of all of the "objects" that exist on your network. Amongst the many objects supported by AD, we have users, groups, machines, printers, shares and many others.
+
+Users are one of the most common object types in Active Directory. Users are one of the objects known as **security principals**, meaning that they can be authenticated by the domain and can be assigned privileges over **resources** like files or printers. You could say that a security principal is an object that can act upon resources in the network.
+
+Machines are another type of object within Active Directory; for every computer that joins the Active Directory domain, a machine object will be created. Machines are also considered "security principals" and are assigned an account just as any regular user. This account has somewhat limited rights within the domain itself.
+
+The machine accounts themselves are local administrators on the assigned computer, they are generally not supposed to be accessed by anyone except the computer itself, but as with any other account, if you have the password, you can use it to log in.
+
+**Note:** Machine Account passwords are automatically rotated out and are generally comprised of 120 random characters.
+
+Identifying machine accounts is relatively easy. They follow a specific naming scheme. The machine account name is the computer's name followed by a dollar sign. For example, a machine named `DC01` will have a machine account called `DC01$`.
+
+**Group Policy Objects (GPO)** GPOs are simply a collection of settings that can be applied to OUs (Organizaional Units). GPOs can contain policies aimed at either users or computers, allowing you to set a baseline on specific machines and identities.
+
+To configure GPOs, you can use the **Group Policy Management** tool.
+
+When a client computer tries to login through a domain, there are 2 different protocols used to authenticate the credentials. The most commonly used nowadays is the Kerberos protocol.
+
+**Kerberos Authentication**
+
+Kerberos authentication is the default authentication protocol for any recent version of Windows. Users who log into a service using Kerberos will be assigned tickets. Think of tickets as proof of a previous authentication. Users with tickets can present them to a service to demonstrate they have already authenticated into the network before and are therefore enabled to use it.
+
+When Kerberos is used for authentication, the following process happens:
+
+1. The user sends their username and a timestamp encrypted using a key derived from their password to the **Key Distribution Center (KDC)**, a service usually installed on the Domain Controller in charge of creating Kerberos tickets on the network.
+    
+    The KDC will create and send back a **Ticket Granting Ticket (TGT)**, which will allow the user to request additional tickets to access specific services. The need for a ticket to get more tickets may sound a bit weird, but it allows users to request service tickets without passing their credentials every time they want to connect to a service. Along with the TGT, a **Session Key** is given to the user, which they will need to generate the following requests.
+    
+    Notice the TGT is encrypted using the **krbtgt** account's password hash, and therefore the user can't access its contents. It is essential to know that the encrypted TGT includes a copy of the Session Key as part of its contents, and the KDC has no need to store the Session Key as it can recover a copy by decrypting the TGT if needed.
+
+![[TGT.png]]
+2. When a user wants to connect to a service on the network like a share, website or database, they will use their TGT to ask the KDC for a **Ticket Granting Service (TGS)**. TGS are tickets that allow connection only to the specific service they were created for. To request a TGS, the user will send their username and a timestamp encrypted using the Session Key, along with the TGT and a **Service Principal Name (SPN),** which indicates the service and server name we intend to access.
+    
+    As a result, the KDC will send us a TGS along with a **Service Session Key**, which we will need to authenticate to the service we want to access. The TGS is encrypted using a key derived from the **Service Owner Hash**. The Service Owner is the user or machine account that the service runs under. The TGS contains a copy of the Service Session Key on its encrypted contents so that the Service Owner can access it by decrypting the TGS.
+
+![[TGT2.png]]
+3. The TGS can then be sent to the desired service to authenticate and establish a connection. The service will use its configured account's password hash to decrypt the TGS and validate the Service Session Key.
+
+![[TGT3.png]]
+
+
+The second method of authentication is called NetNTLM Authentication.
+
+**NetNTLM Authentication**
+NetNTLM works using a challenge-response mechanism. The entire process is as follows:
+![[NNTLM.png]]
+
+1. The client sends an authentication request to the server they want to access.
+2. The server generates a random number and sends it as a challenge to the client.
+3. The client combines their NTLM password hash with the challenge (and other known data) to generate a response to the challenge and sends it back to the server for verification.
+4. The server forwards the challenge and the response to the Domain Controller for verification.
+5. The domain controller uses the challenge to recalculate the response and compares it to the original response sent by the client. If they both match, the client is authenticated; otherwise, access is denied. The authentication result is sent back to the server.
+6. The server forwards the authentication result to the client.
+
+Note that the user's password (or hash) is never transmitted through the network for security.
+
+**Note:** The described process applies when using a domain account. If a local account is used, the server can verify the response to the challenge itself without requiring interaction with the domain controller since it has the password hash stored locally on its SAM.
+
+As companies grow, so do their networks. Having a single domain for a company is good enough to start, but in time some additional needs might push you into having more than one. This is where trees and forests are presented (no pun intended ;)). 
+
+**Trees**
+![[Tree.png]]
+This partitioned structure gives us better control over who can access what in the domain. The IT people from the UK will have their own DC that manages the UK resources only. For example, a UK user would not be able to manage US users. In that way, the Domain Administrators of each branch will have complete control over their respective DCs, but not other branches' DCs. Policies can also be configured independently for each domain in the tree.
+
+A new security group needs to be introduced when talking about trees and forests. The **Enterprise Admins** group will grant a user administrative privileges over all of an enterprise's domains. Each domain would still have its Domain Admins with administrator privileges over their single domains and the Enterprise Admins who can control everything in the enterprise.
+
+**Forests**
+The domains you manage can also be configured in different namespaces. Suppose your company continues growing and eventually acquires another company called `MHT Inc.` When both companies merge, you will probably have different domain trees for each company, each managed by its own IT department. The union of several trees with different namespaces into the same network is known as a **forest**.
+![[Forests.png]]
+
+**Trust Relationships**
+
+Having multiple domains organised in trees and forest allows you to have a nice compartmentalised network in terms of management and resources. But at a certain point, a user at THM UK might need to access a shared file in one of MHT ASIA servers. For this to happen, domains arranged in trees and forests are joined together by **trust relationships**.
+
+In simple terms, having a trust relationship between domains allows you to authorise a user from domain `THM UK` to access resources from domain `MHT EU`.
+
+The simplest trust relationship that can be established is a **one-way trust relationship**. In a one-way trust, if `Domain AAA` trusts `Domain BBB`, this means that a user on BBB can be authorised to access resources on AAA:
+![[Trust.png]]
