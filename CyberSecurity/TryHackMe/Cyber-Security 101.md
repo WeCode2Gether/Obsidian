@@ -155,3 +155,22 @@ In simple terms, having a trust relationship between domains allows you to autho
 
 The simplest trust relationship that can be established is a **one-way trust relationship**. In a one-way trust, if `Domain AAA` trusts `Domain BBB`, this means that a user on BBB can be authorised to access resources on AAA:
 ![[Trust.png]]
+
+
+### Windows Command Line
+- [set] to check path and other information.
+- [ver] to check windows version
+- [systeminfo] to have a fully detailed information of the machine you are using, This includes OS, Memory, CPU and etc.
+- [| more] which is a way you can read it by piping it through more. Similar to linux!
+- [tracert] gives us the amount of routers our command goes through before reaching the target.
+- [nslookup] It looks up a host or domain and returns its IP address.
+- [netstat] displays current network connections and listening ports.
+- [mkdir] to make a directory
+- [rmdir] do remove a directory
+- [move] to move a file.
+- [copy] to copy a file
+- [type] similar to [cat] on linux but for txt files.
+- [del] or [erase] to delete/erase a file. (same thing)
+- [tasklist] to check all the running processes.  To search for a specific process you type:
+	- `tasklist /FI "imagename eq notepad.exe"` this searches for the notepad.exe
+- 
