@@ -173,4 +173,8 @@ The simplest trust relationship that can be established is a **one-way trust re
 - [del] or [erase] to delete/erase a file. (same thing)
 - [tasklist] to check all the running processes.  To search for a specific process you type:
 	- `tasklist /FI "imagename eq notepad.exe"` this searches for the notepad.exe
+- [taskill /PID [enter PID here]] This is how you would kill a task on windows.
+- [chkdsk] checks the file system and disk volumes for errors and bad sectors.
+- [driverquery] displays a list of installed device drivers.
+- [sfc /scannow] scans system files for corruption and repairs them if possible.
 - 
