@@ -178,3 +178,17 @@ The simplest trust relationship that can be established is a **one-way trust re
 - [driverquery] displays a list of installed device drivers.
 - [sfc /scannow] scans system files for corruption and repairs them if possible.
 - 
+#### Windows Powershell
+Initially exclusive to Windows, PowerShell has lately expanded to support macOS and Linux, making it a versatile option for IT professionals across different operating systems. Capable of not only Command Line shell but also scripting built on the .NET framework.
+
+Powershell commands are known as `cmdlets` (pronounced "command-lets") which is basically a `verb-noun` command build. for example:
+- [set-location] Changes (sets) the current working directory.
+- [get-content] Retrieves (gets) the content of a file and displays it in the console.
+
+Now to get into the commands one can use in Powershell:
+- [Get-Command] To list all available cmdlets, functions, aliases, and scripts that can be executed in the current PowerShell session. :
+	- [Get-Command -CommandType "Function"] to filter out the functions rather than cmdlets and the rest!
+- [Get-Help] it provides detailed information about cmdlets, including usage, parameters, and examples. It’s the go-to cmdlet for learning how to use PowerShell commands.
+	- [Get-Help [insert cmdlet here]] This is how one would get a specific cmdlet's manual.
+	- [get-help [insert cmdlet here] [-examples]] to show examples of that specific cmdlet.
+- 
