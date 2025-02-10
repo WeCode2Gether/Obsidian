@@ -190,5 +190,35 @@ Now to get into the commands one can use in Powershell:
 	- [Get-Command -CommandType "Function"] to filter out the functions rather than cmdlets and the rest!
 - [Get-Help] it provides detailed information about cmdlets, including usage, parameters, and examples. It’s the go-to cmdlet for learning how to use PowerShell commands.
 	- [Get-Help [insert cmdlet here]] This is how one would get a specific cmdlet's manual.
-	- [get-help [insert cmdlet here] [-examples]] to show examples of that specific cmdlet.
-- 
+	- [[get-help [insert cmdlet here] [-examples]] to show examples of that specific cmdlet.
+	- 
+- [get-alias] which shows cmdlets that would translate to command prompt commands such as set-direction being cd.
+- [Find-Module] which is a way to search online for certain cmdlets that you can download. 
+	- [Find-Module -name "(enter name here)] is a way you can search for specific modules/cmdlets.
+- [Install-module -name "[enter name here]"] this is how you would install that specific module/cmdlet
+- [Get-ChildItem] is similar to `dir` on the CLI or `ls` on linux.
+	- [get-childitem | sort-object Length] will sort the directory's files/folders to show the one with the highest number of characters first and the least being the last. In PowerShell, piping is even more powerful because it passes **objects** rather than just text.
+	- [Get-ChildItem | Where-Object -Property "Extension" -eq ".txt"] Shows and lists the items in this directory that have a .txt ext. (Where "Where-object" filters files by extension) The `-eq` means "equal to" and there are more comparison operators. Here is a list:
+		- - `-ne`: "**not equal**". This operator can be used to exclude objects from the results based on specified criteria.
+		- `-gt`: "**greater than**". This operator will filter only objects which exceed a specified value. It is important to note that this is a strict comparison, meaning that objects that are equal to the specified value will be excluded from the results.
+		- `-ge`: "**greater than or equal to**". This is the non-strict version of the previous operator. A combination of `-gt` and `-eq`.
+		- `-lt`: "**less than**". Like its counterpart, "greater than", this is a strict operator. It will include only objects which are strictly below a certain value.
+		- `-le`: "**less than or equal to**". Just like its counterpart `-ge`, this is the non-strict version of the previous operator. A combination of `-lt` and `-eq`.
+		- `-like` which is a "kinda like" operator. Usually used with a * at the end or beginning of what you are searching for. 
+	- [get-childitem | select-object Name,Length]  is used to select specific properties from objects or limit the number of objects returned. It’s useful for refining the output to show only the details one needs.
+- [New-Item] is used to create a directory or a file.
+- [remove-item] is used to remove a directory or a file.
+- [copy-item] is used to copy a directory or a file.
+- [move-item] is used to move a directory or a file.
+- [get-content] to view a file's content (similar to `cat` on linux and `type` on windows CLI)
+- [select-string] This cmdlet searches for text patterns within files, similar to `grep` in Unix-based systems or `findstr` in Windows Command Prompt. It’s commonly used for finding specific content within log files or documents.
+- [Get-computerinfo] retrieves comprehensive system information, including operating system information, hardware specifications, BIOS details, and more. As oppose to `systeminfo` which gives limited details.
+- [get-localuser]  lists all the local user accounts on the system.
+- [get-netipconfiguration] which is similar to `ipconfig`
+- [get-netipaddress] will show details for all IP addresses configured on the system, including those that are not currently active.
+- [get-process]  provides a detailed view of all currently running processes, including CPU and memory usage, making it a powerful tool for monitoring and troubleshooting.
+- [get-service] lists services of the OS.
+- [Get-NetTCPConnection] shows current tcp connections that are active.
+- [Get-FileHash] to generate a hash for a file.
+- [invoke-command] a way to execute a script or a command on a remote computer:
+	- `invoke-command -computername royalfortune -scriptblock { get-service}` to run `get-service` command on the computer `royalfortune` . The `-scriptblock` is for a custom command u type in with the powershell.
