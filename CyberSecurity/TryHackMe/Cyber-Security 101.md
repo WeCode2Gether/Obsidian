@@ -222,3 +222,4 @@ Now to get into the commands one can use in Powershell:
 - [Get-FileHash] to generate a hash for a file.
 - [invoke-command] a way to execute a script or a command on a remote computer:
 	- `invoke-command -computername royalfortune -scriptblock { get-service}` to run `get-service` command on the computer `royalfortune` . The `-scriptblock` is for a custom command u type in with the powershell.
+### Linux Shells
