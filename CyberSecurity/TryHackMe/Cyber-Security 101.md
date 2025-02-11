@@ -223,3 +223,88 @@ Now to get into the commands one can use in Powershell:
 - [invoke-command] a way to execute a script or a command on a remote computer:
 	- `invoke-command -computername royalfortune -scriptblock { get-service}` to run `get-service` command on the computer `royalfortune` . The `-scriptblock` is for a custom command u type in with the powershell.
 ### Linux Shells
+
+There are many different shells on linux; to each, features and amazing capabilities:
+	![[Shells.jpg]]
+- [pwd] show default location
+- [cd] change directory
+- [ls] list files/folders of current directory
+- [grep] search within a file or used as a pipe to filter our searches/results
+- [echo $SHELL] shows what shell you are using. 
+- [cat /etc/shells] to list the shells installed on ur system.
+- [chsh -s (/usr/bin/zsh) <--- shell name] to permanently change the shell on ur system. To switch between them, you just type in `bash` or whatever shell you prefer.
+- [history] to check all the previous commands sent
+
+#### creating scripts
+##### Variables
+````shell
+#!/bin/bash
+
+echo "what is your name?"
+read name
+echo "Hello, $name"
+````
+What this does is ask the user for his name. Then reads that name into the variable `name` and then spits that out with `echo "hello, $name"`
+
+##### Loops
+````shell
+#!/bin/bash
+
+for i in {1..10};
+do
+echo $i
+done
+````
+This will take the variable `i` and replace it each time with numbers from `1..10`
+`echo` will spit the value of `i` each time
+`done` indicates the end of the script. Where the loop ends.
+
+##### Conditional Statements
+````shell
+#!/bin/bash
+
+echo "Please enter your name first:"
+read name
+if [ "$name" = "Stewart" ]; then
+        echo "Welcome Stewart! Here is the secret: THM_Script"
+else
+        echo "Sorry! You are not authorized to access the secret."
+fi
+````
+Takes name and places it into the variable `name` 
+It then checks `name` and checks if it is `"stewart"` 
+If it is then it shows it the secret code
+`else` meaning if it isn't, then `echo "Sorry! You are not authorized to access the secret."`
+`fi` is to finish.
+
+```shell
+# Defining the Interpreter 
+#!/bin/bash 
+
+# Defining the variables by making them an empty variable (placeholder)
+username=""
+companyname=""
+pin=""
+
+# Defining the loop. This is so the program/script doesn't exit.
+for i in {1..3}; do
+# Defining the conditional statements
+        if [ "$i" -eq 1 ]; then
+                echo "Enter your Username:"
+                read username
+        elif [ "$i" -eq 2 ]; then
+                echo "Enter your Company name:"
+                read companyname
+        else
+                echo "Enter your PIN:"
+                read pin
+        fi
+done
+
+# Checking if the user entered the correct details (uppercase and lowercase sensitive)
+if [ "$username" = "John" ] && [ "$companyname" = "Tryhackme" ] && [ "$pin" = "7385" ]; then
+        echo "Authentication Successful. You can now access your locker, John."
+else
+        echo "Authentication Denied!!"
+fi
+```
