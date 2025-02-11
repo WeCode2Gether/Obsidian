@@ -13,13 +13,13 @@ cp ~/Desktop/WeCode2Gether/update.sh ~/Desktop/WeCode2Gether/Obsidian
 cp ~/Desktop/WeCode2Gether/update.sh ~/Desktop/WeCode2Gether/wallpapers
 
 # Copying config and dotfiles to the ConfigFiles Repo
-#cp -r ~/dotfiles/.config/hypr ~/Desktop/WeCode2Gether/ConfigFiles/hypr
-#cp -r ~/dotfiles/.config/kitty ~/Desktop/WeCode2Gether/ConfigFiles/kitty
-#cp -r ~/.config/neofetch ~/Desktop/WeCode2Gether/ConfigFiles/neofetch
-#cp -r ~/dotfiles/.config/zshrc ~/Desktop/WeCode2Gether/ConfigFiles/zshrc
-#cp -r ~/.config/ytfzf ~/Desktop/WeCode2Gether/ConfigFiles/ytfzf
-#cp -r ~/.config/Vencord ~/Desktop/WeCode2Gether/ConfigFiles/Vencord
-#cp -r ~/dotfiles/.config/ml4w ~/Desktop/WeCode2Gether/ConfigFiles/ml4w
+cp -r ~/dotfiles/.config/hypr ~/Desktop/WeCode2Gether/ConfigFiles/hypr
+cp -r ~/dotfiles/.config/kitty ~/Desktop/WeCode2Gether/ConfigFiles/kitty
+cp -r ~/.config/neofetch ~/Desktop/WeCode2Gether/ConfigFiles/neofetch
+cp -r ~/dotfiles/.config/zshrc ~/Desktop/WeCode2Gether/ConfigFiles/zshrc
+cp -r ~/.config/ytfzf ~/Desktop/WeCode2Gether/ConfigFiles/ytfzf
+cp -r ~/.config/Vencord ~/Desktop/WeCode2Gether/ConfigFiles/Vencord
+cp -r ~/dotfiles/.config/ml4w ~/Desktop/WeCode2Gether/ConfigFiles/ml4w
 
 # Copying Obsidian notes to the Obsidian Repo
 cp -r ~/Documents/CyberSecurity ~/Desktop/WeCode2Gether/Obsidian
